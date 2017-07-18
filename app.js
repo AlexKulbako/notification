@@ -1,3 +1,6 @@
+firebase.initializeApp({
+    messagingSenderId: '448358493027'
+});
 
 
 var bt_register = $('#register');
@@ -32,7 +35,7 @@ function addZero(i) {
 setNotificationDemoBody();
 resetUI();
 
-if (
+if (window.location.protocol === 'https:' &&
     'Notification' in window &&
     'serviceWorker' in navigator &&
     'localStorage' in window &&
@@ -94,7 +97,7 @@ if (
         ;
 
         // register fake ServiceWorker for show notification on mobile devices
-        navigator.serviceWorker.register('/notification/firebase-messaging-sw.js');
+        navigator.serviceWorker.register('/serviceworker/messaging-sw.js');
         Notification.requestPermission(function(permission) {
             if (permission === 'granted') {
                 navigator.serviceWorker.ready.then(function(registration) {
@@ -179,7 +182,7 @@ function getToken() {
 
 
 function sendNotification(notification) {
-    var key = 'AIzaSyDkpGpdYFmCOQfcrBqVuImZ8ljzjiQj_jA';
+    var key = 'AAAAaGQ_q2M:APA91bGCEOduj8HM6gP24w2LEnesqM2zkL_qx2PJUSBjjeGSdJhCrDoJf_WbT7wpQZrynHlESAoZ1VHX9Nro6W_tqpJ3Aw-A292SVe_4Ho7tJQCQxSezDCoJsnqXjoaouMYIwr34vZTs';
 
     console.log('Send notification', notification);
 
