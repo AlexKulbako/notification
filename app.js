@@ -1,5 +1,5 @@
 firebase.initializeApp({
-    messagingSenderId: '328947432649'
+    messagingSenderId: '448358493027'
 });
 
 
@@ -35,7 +35,7 @@ function addZero(i) {
 setNotificationDemoBody();
 resetUI();
 
-if (/*window.location.protocol === 'https:' &&*/
+if (window.location.protocol === 'https:' &&
     'Notification' in window &&
     'serviceWorker' in navigator &&
     'localStorage' in window &&
@@ -97,7 +97,7 @@ if (/*window.location.protocol === 'https:' &&*/
         ;
 
         // register fake ServiceWorker for show notification on mobile devices
-        navigator.serviceWorker.register('/messaging-sw.js');
+        navigator.serviceWorker.register('/notification/messaging-sw.js');
         Notification.requestPermission(function(permission) {
             if (permission === 'granted') {
                 navigator.serviceWorker.ready.then(function(registration) {
