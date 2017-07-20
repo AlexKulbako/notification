@@ -35,7 +35,7 @@ function addZero(i) {
 setNotificationDemoBody();
 resetUI();
 
-if (window.location.protocol === 'https:' &&
+if (
     'Notification' in window &&
     'serviceWorker' in navigator &&
     'localStorage' in window &&
@@ -97,7 +97,7 @@ if (window.location.protocol === 'https:' &&
             ;
 
         // register fake ServiceWorker for show notification on mobile devices
-        navigator.serviceWorker.register('/serviceworker/messaging-sw.js');
+        navigator.serviceWorker.register('/messaging-sw.js');
         Notification.requestPermission(function (permission) {
             if (permission === 'granted') {
                 navigator.serviceWorker.ready.then(function (registration) {
@@ -126,9 +126,7 @@ if (window.location.protocol === 'https:' &&
     });
 
 } else {
-    if (window.location.protocol !== 'https:') {
-        showError('Is not from HTTPS');
-    } else if (!('Notification' in window)) {
+    if (!('Notification' in window)) {
         showError('Notification not supported');
     } else if (!('serviceWorker' in navigator)) {
         showError('ServiceWorker not supported');
